@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block styles %}
+<style>
+    .container {
+        max-width: 500px;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: #EEF2E6;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #333333;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn {
+        width: 100%;
+        background-color: #D4D9C8;
+        color: #333333;
+    }
+
+    .output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #D4D9C8;
+        border-radius: 5px;
+        text-align: center;
+        color: #333333;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>BMR Calculator</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ wtf.form_field(form.weight) }}
+            <span>{{ wtf.form_field(form.weight_unit, label="Unit:") }}</span>
+        </div>
+        <div class="form-group">
+            {{ wtf.form_field(form.height) }}
+            <span>{{ wtf.form_field(form.height_unit, label="Unit:") }}</span>
+        </div>
+        {{ wtf.form_field(form.age) }}
+        {{ wtf.form_field(form.gender) }}
+        {{ wtf.form_field(form.submit) }}
+    </form>
+    {% if bmr_result %}
+    <div class="output">
+        <p>Your Basal Metabolic Rate (BMR) is: {{ bmr_result }} calories per day</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
