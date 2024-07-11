@@ -12,6 +12,14 @@
             color: #333333; /* Dark text color for better contrast */
         }
     </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Health Calculator</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-item nav-link" href="{{ url_for('bmi') }}">BMI Calculator</a>
+            <a class="nav-item nav-link" href="{{ url_for('bmr') }}">BMR Calculator</a>
+        </div>
+    </nav>
 </head>
 <body>
     {% block content %}{% endblock %}

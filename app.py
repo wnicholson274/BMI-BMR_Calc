@@ -12,6 +12,10 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 bootstrap = Bootstrap(app)
 
+@app.route('/')
+def home():
+    return render_template('home.html')
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = BMRCalculator()
